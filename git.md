@@ -45,8 +45,8 @@ git config --global user.name 'libo'
 git config --global user.email '1045598742@qq.com'
 
 //创建某个仓库的账号（local优先级比global高）
-git config --global user.name 'libo'
-git config --global user.email '1045598742@qq.com'
+git config --local user.name 'libo'
+git config --local user.email '1045598742@qq.com'
 
 git init //创建git仓库
 cp ../first/index.html //拷贝你想要托管的代码
@@ -67,7 +67,8 @@ git mv index.html index1.html//直接修改文件后添加到暂存区
 git branch -v //看有多少分支
 git checkout -b temp //创建分支temp
 git checkout （分支名） //切换分支
-
+git branch -d 分支名 //删除分支
+git push origin HEAD --force/推到远程
 ~~~
 
 ![1584189821072](D:\学习笔记\img\1584189821072.png)
@@ -82,6 +83,9 @@ git checkout （分支名） //切换分支
 git remote add origin https://github.com/1045598742/node_project.git //origin是你自己起的别名，根据你自己喜好，
 git remote -v //查看远程仓库状态一般有两个（一个拉取和一个提交）
 //如果git remote add b https://**sdsd**dd**.dd(这样错的地址，需要git remote rm b 删除关联)
+git  push -u  origin 分支名 //将分支推送到远程仓库
+git push origin --delete branchName //删除远程分支
+git reset --hard origin/branchName //丢弃本地变更 重置为远端分支内容
 git push -u origin master //向远程仓库提交代码
 git pull origin master//拉取代码
 ssh-keygen -t rsa -C 邮箱 //配置公钥和私钥，然后一路回车，结束后查看.ssh文件，cd ~/.ssh然后cat id_rsa.pub，复制密码，然后去github右上角头像里点击setting，找到SSH and GPG keys点进去把密匙粘贴进去确定，之后你再提交代码就不用每次都输入账号和密码了
@@ -93,6 +97,7 @@ gh-pages分支来发布我们的静态页
 将分支提到线上仓库
 找到提供给你的网站
 git checkout -b gh-pages //创建分支并切换
+
 //提交你的文件 然后切换这个分支 取setting找网址
 ~~~
 
